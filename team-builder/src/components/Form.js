@@ -5,14 +5,24 @@ const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 45%;
 
     label {
         padding: 1rem 0;
+        font-weight: 500;
+        font-size: 1.2rem
     }
 
     input {
         padding: 1rem;
         outline: none;
+        font-size: 1rem;
+        transition: ease-in-out 0.1s;
+
+        &:hover {
+        transition: ease-in-out 0.1s;
+        transform: scale(1.02);
+        }
     }
 
     button {
@@ -27,9 +37,11 @@ const StyledForm = styled.form`
         margin: 1rem 0;
         cursor: pointer;
         outline: none;
+        transition: ease-in-out 0.1s;
 
         &:hover {
             transform: scale(1.1);
+            transition: ease-in-out 0.1s;
         }
     }
 `;

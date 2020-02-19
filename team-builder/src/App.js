@@ -8,13 +8,13 @@ import Form from './components/Form';
 const initialTeamMembers = [
   {
     id: uuid(),
-    name: 'Babou',
+    name: 'Babou the Ocelot',
     email: 'babou@cyberdyne.net',
     role: 'Frontend Developer'
   },
   {
     id: uuid(),
-    name: 'Mojo',
+    name: 'Mojo the Helper Monkey',
     email: 'mojo@cyberdyne.net',
     role: 'Backend Engineer'
   }
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Sign up to be a member of our team</h2>
+      <h2>Sign up to be a member of our team:</h2>
       <Form 
         teamMembersData={teamMemberForm}
         onNameChange={handleNameChange}
