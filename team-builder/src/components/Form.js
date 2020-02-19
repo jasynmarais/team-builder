@@ -18,7 +18,7 @@ const StyledForm = styled.form`
     button {
         width: 80px;
         font-size: 1.2rem;
-        background: green;
+        background: blue;
         color: white;
         font-weight: bold;
         padding: 0.5rem;
@@ -35,18 +35,45 @@ const StyledForm = styled.form`
 `;
 
 const Form = props => {
+    const { name, email, role } = props.teamMembersData;
+    const { onNameChange, onEmailChange, onRoleChange, onFormSubmit } = props;
+
+    const isDisabled = () => {
+        return !name || !email || !role;
+    };
+
     return (
         <StyledForm>
             <label htmlFor='nameInput'>Name</label>
-            <input type='text' id='nameInput' />
+            <input 
+            type='text' 
+            id='nameInput' 
+            value={name}
+            onChange={onNameChange}
+            />
 
             <label htmlFor='emailInput'>Email</label>
-            <input type='text' id='emailInput' />
+            <input 
+            type='text' 
+            id='emailInput' 
+            value={email}
+            onChange={onEmailChange}
+            />
 
             <label htmlFor='roleInput'>Role</label>
-            <input type='text' id='roleInput' />
+            <input 
+            type='text' 
+            id='roleInput'
+            value={role}
+            onChange={onRoleChange} 
+            />
 
-            <button>Submit</button>
+            <button
+                onClick={onFormSubmit}
+                disabled={isDisabled()}
+            >
+                Submit
+            </button>
         </StyledForm>
     );
 };
