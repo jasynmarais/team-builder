@@ -26,8 +26,8 @@ const StyledForm = styled.form`
     }
 
     button {
-        width: 80px;
-        font-size: 1.2rem;
+        width: 125px;
+        font-size: 1.25rem;
         background: blue;
         color: white;
         font-weight: bold;

@@ -31,8 +31,15 @@ function App() {
   // Set State for App
   const [teamForm, setTeamForm] = useState(initialFormState);
   const [teamList, setTeamList] = useState(initialTeamState);
+  const [ memberToEdit, setMemberToEdit ] = useState({});
   
   // Handler Functions
+  const handleClick = id => {
+    const member = teamList.filter(item => item.id === id);
+    setMemberToEdit(member[0]);
+    setTeamForm(member[0]);
+  }
+
   const handleChange = e => {
     setTeamForm({
       ...teamForm,
@@ -59,13 +66,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Sign Up to be a Member of The Team:</h1>
+      <h1>The Team Needs You!</h1>
       <Form 
         teamForm={teamForm}
+        memberToEdit={memberToEdit}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-      <Team teamList={teamList} />
+      <Team teamList={teamList} handleClick={handleClick} />
     </div>
   );
 }
