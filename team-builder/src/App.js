@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import uuid from 'uuid';
 import './App.css';
 
+import TeamMembers from './components/TeamMembers';
+import Form from './components/Form';
+
+const initialTeamMembers = [
+  {
+    id: uuid(),
+    name: 'Babou',
+    role: 'Frontend Developer'
+  },
+  {
+    id: uuid(),
+    name: 'Mojo',
+    role: 'Backend Engineer'
+  }
+];
+
 function App() {
+  const [teamMembersList, setTeamMembersList] = useState(initialTeamMembers);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form />
+      <TeamMembers teamMembers={teamMembersList} />
     </div>
   );
 }
