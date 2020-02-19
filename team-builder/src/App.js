@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Sign up to be a member of our team:</h2>
+      <h1>Sign Up to be a Member of The Team:</h1>
       <Form 
         teamMembersData={teamMemberForm}
         onNameChange={handleNameChange}

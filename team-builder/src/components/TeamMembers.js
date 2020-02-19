@@ -10,9 +10,10 @@ const StyledHeaders = styled.h4`
 const TeamMembers = props => {
     return (
         <div>
+            <h1>The Team</h1>
             {props.teamMembers.map(teamMember => (
                 <StyledHeaders key={teamMember.id}>
-                    {teamMember.name} is a {teamMember.role}.
+                    - {teamMember.name} is a {teamMember.role}.
                 </StyledHeaders>
             ))}
         </div>
