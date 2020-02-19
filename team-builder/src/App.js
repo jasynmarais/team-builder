@@ -5,7 +5,8 @@ import './App.css';
 import TeamMembers from './components/TeamMembers';
 import Form from './components/Form';
 
-const initialTeamMembers = [
+// Default State
+const initialTeamState = [
   {
     id: uuid(),
     name: 'Babou the Ocelot',
@@ -20,16 +21,18 @@ const initialTeamMembers = [
   }
 ];
 
-const initialTeamMemberForm = {
+const initialFormState = {
   name: '',
   email: '',
   role: ''
 };
 
 function App() {
-  const [teamMembersList, setTeamMembersList] = useState(initialTeamMembers);
-  const [teamMemberForm, setTeamMemberForm] = useState(initialTeamMemberForm);
-
+  // Set State for App
+  const [teamMembersList, setTeamMembersList] = useState(initialTeamState);
+  const [teamMemberForm, setTeamMemberForm] = useState(initialFormState);
+  
+  // Handler Functions
   const handleNameChange = e => {
     setTeamMemberForm({
       name: e.target.value,
@@ -56,15 +59,17 @@ function App() {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    console.log("Thank you for signing up!");
     const newTeamMember = {
       id: uuid(),
       name: teamMemberForm.name,
       email: teamMemberForm.email,
       role: teamMemberForm.role
     };
+
     const newTeamMemberList = teamMembersList.concat(newTeamMember);
     setTeamMembersList(newTeamMemberList);
-    setTeamMemberForm(initialTeamMemberForm);
+    setTeamMemberForm(initialFormState);
   }
 
   return (

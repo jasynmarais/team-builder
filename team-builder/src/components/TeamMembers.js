@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeaders = styled.h4`
-    font-size: 1.3rem;
-    padding: 1rem 0;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
     margin: 0;
 `;
 
@@ -13,7 +13,7 @@ const TeamMembers = props => {
             <h1>The Team</h1>
             {props.teamMembers.map(teamMember => (
                 <StyledHeaders key={teamMember.id}>
-                    - {teamMember.name} is a {teamMember.role}.
+                    - {teamMember.name} ({teamMember.email}) is a {teamMember.role}.
                 </StyledHeaders>
             ))}
         </div>
