@@ -47,45 +47,22 @@ const StyledForm = styled.form`
 `;
 
 const Form = props => {
-    const { name, email, role } = props.teamMembersData;
-    const { onNameChange, onEmailChange, onRoleChange, onFormSubmit } = props;
-
-    const isDisabled = () => {
-        return !name || !email || !role;
-    };
+    
+    const { teamForm, handleChange, handleSubmit } = props;
+    const { name, email, role } = teamForm;
 
     return (
         <StyledForm>
-            <label htmlFor='nameInput'>Name</label>
-            <input 
-            type='text' 
-            id='nameInput' 
-            value={name}
-            onChange={onNameChange}
-            />
-
-            <label htmlFor='emailInput'>Email</label>
-            <input 
-            type='text' 
-            id='emailInput' 
-            value={email}
-            onChange={onEmailChange}
-            />
-
-            <label htmlFor='roleInput'>Role</label>
-            <input 
-            type='text' 
-            id='roleInput'
-            value={role}
-            onChange={onRoleChange} 
-            />
-
-            <button
-                onClick={onFormSubmit}
-                disabled={isDisabled()}
-            >
-                Submit
-            </button>
+            <label htmlFor="name">Name</label>
+            <input type="text" onChange={handleChange} id="name" value={name} required />
+            
+            <label htmlFor="email">Email Address</label>
+            <input type="email" onChange={handleChange} id="email" value={email} required />
+            
+            <label htmlFor="role">Role</label>
+            <input type="role" onChange={handleChange} id="role" value={role} required />
+            
+            <button onClick={handleSubmit}>Submit</button>
         </StyledForm>
     );
 };

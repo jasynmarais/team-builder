@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import uuid from 'uuid';
 import './App.css';
 
-import TeamMembers from './components/TeamMembers';
+import Team from './components/Team';
 import Form from './components/Form';
 
 // Default State
@@ -29,60 +29,43 @@ const initialFormState = {
 
 function App() {
   // Set State for App
-  const [teamMembersList, setTeamMembersList] = useState(initialTeamState);
-  const [teamMemberForm, setTeamMemberForm] = useState(initialFormState);
+  const [teamForm, setTeamForm] = useState(initialFormState);
+  const [teamList, setTeamList] = useState(initialTeamState);
   
   // Handler Functions
-  const handleNameChange = e => {
-    setTeamMemberForm({
-      name: e.target.value,
-      email: teamMemberForm.email,
-      role: teamMemberForm.role
-    });
-  };
-
-  const handleEmailChange = e => {
-    setTeamMemberForm({
-      name: teamMemberForm.name,
-      email: e.target.value,
-      role: teamMemberForm.role
-    });
-  };
-
-  const handleRoleChange = e => {
-    setTeamMemberForm({
-      name: teamMemberForm.name,
-      email: teamMemberForm.email,
-      role: e.target.value
-    });
-  };
-
-  const handleFormSubmit = e => {
+  const handleChange = e => {
+    setTeamForm({
+      ...teamForm,
+      [e.target.id]: e.target.value
+    })
+  }
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log("Thank you for signing up!");
-    const newTeamMember = {
-      id: uuid(),
-      name: teamMemberForm.name,
-      email: teamMemberForm.email,
-      role: teamMemberForm.role
-    };
+    const { name, email, role } = teamForm;
 
-    const newTeamMemberList = teamMembersList.concat(newTeamMember);
-    setTeamMembersList(newTeamMemberList);
-    setTeamMemberForm(initialFormState);
+    if(name && email && role) {
+      const submittedValues = [{
+        id: uuid(),
+        name: name,
+        email: email,
+        role: role
+      }]
+
+      const newTeamList = submittedValues.concat(teamList);
+      setTeamList(newTeamList);
+      setTeamForm(initialFormState);
+    }
   }
 
   return (
     <div className="App">
       <h1>Sign Up to be a Member of The Team:</h1>
       <Form 
-        teamMembersData={teamMemberForm}
-        onNameChange={handleNameChange}
-        onEmailChange={handleEmailChange}
-        onRoleChange={handleRoleChange}
-        onFormSubmit={handleFormSubmit}
+        teamForm={teamForm}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
       />
-      <TeamMembers teamMembers={teamMembersList} />
+      <Team teamList={teamList} />
     </div>
   );
 }

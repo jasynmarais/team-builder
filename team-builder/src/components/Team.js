@@ -7,17 +7,22 @@ const StyledHeaders = styled.h4`
     margin: 0;
 `;
 
-const TeamMembers = props => {
+const Team = props => {
+
+    const { teamList } = props;
+
     return (
         <div>
             <h1>The Team</h1>
-            {props.teamMembers.map(teamMember => (
-                <StyledHeaders key={teamMember.id}>
-                    - {teamMember.name} ({teamMember.email}) is a {teamMember.role}.
+        {
+          teamList.map(member => (
+            <StyledHeaders key={member.id}>
+                    - {member.name} ({member.email}) is a {member.role}.
                 </StyledHeaders>
-            ))}
+          ))
+        }
         </div>
     );
 };
 
-export default TeamMembers;
+export default Team;
